@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus — Learn a Skill Worth Showing Off | Online Course Platform</title>
+  <meta name="description" content="Campus is a friendly online-course platform with 4,200+ expert-led video courses, hands-on projects and shareable certificates. Start free, learn at your pace.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Campus home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" role="img" aria-hidden="true">
+            <path d="M12 3.2 22.5 8 12 12.8 1.5 8 12 3.2Z" fill="currentColor"/>
+            <path d="M6 10.4V15c0 1.7 2.9 3.1 6 3.1s6-1.4 6-3.1v-4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M22.5 8v4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="22.5" cy="13.2" r="1.15" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-name">Campus</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#instructors">Instructors</a></li>
+          <li><a href="#how">How it works</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="link-plain" href="#">Log in</a>
+          <a class="btn btn-brand" href="#courses">Join free</a>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span>4,200+ courses · 50+ topics · new lessons weekly</p>
+          <h1 id="hero-title">Skills worth showing off, taught by people worth learning from.</h1>
+          <p class="hero-lead">Campus pairs you with expert-led video courses, real hands-on projects, and a certificate you'll actually want to share. Start free — upgrade only when you're hooked.</p>
+
+          <form class="search-bar" id="searchBar" role="search" novalidate>
+            <div class="search-field">
+              <span class="search-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <label class="visually-hidden" for="q">What do you want to learn?</label>
+              <input type="text" id="q" name="q" placeholder="What do you want to learn?" autocomplete="off">
+            </div>
+            <label class="visually-hidden" for="cat">Category</label>
+            <select id="cat" name="cat" class="search-select">
+              <option value="">All categories</option>
+              <option>Development</option>
+              <option>Design</option>
+              <option>Business</option>
+              <option>Marketing</option>
+              <option>Data Science</option>
+              <option>Languages</option>
+            </select>
+            <button class="btn btn-brand search-submit" type="submit">Find courses</button>
+          </form>
+          <p class="search-note" id="searchNote" role="status" aria-live="polite"></p>
+
+          <div class="hero-chips">
+            <span class="chips-label">Trending:</span>
+            <button class="chip" type="button">Python</button>
+            <button class="chip" type="button">UX Design</button>
+            <button class="chip" type="button">Excel</button>
+            <button class="chip" type="button">Public Speaking</button>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="false">
+          <div class="hero-frame">
+            <img src="img/hero.jpg" width="1280" height="720" alt="Students learning together with laptops in a bright classroom" loading="eager">
+          </div>
+          <div class="float-card float-rating">
+            <span class="fc-star" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg>
+            </span>
+            <div>
+              <strong>4.8 / 5</strong>
+              <small>from 92,000 learners</small>
+            </div>
+          </div>
+          <div class="float-card float-cert">
+            <span class="fc-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <strong>Certificate earned</strong>
+              <small>Data Science track</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section class="section categories" id="categories" aria-labelledby="cat-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Browse by topic</p>
+            <h2 id="cat-title">Find your corner of Campus</h2>
+          </div>
+          <p class="section-sub">Fifty subjects, one login. Pick a lane and go deep, or wander — your progress saves everywhere.</p>
+        </div>
+
+        <ul class="cat-grid reveal">
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-dev" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="m9 8-5 4 5 4M15 8l5 4-5 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="cat-name">Development</span>
+            <span class="cat-count">612 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-design" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 20s2-6 8-12l4 4C10 18 4 20 4 20Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m14 6 4 4 2.2-2.2a1.6 1.6 0 0 0 0-2.2l-1.8-1.8a1.6 1.6 0 0 0-2.2 0L14 6Z" fill="currentColor"/></svg></span>
+            <span class="cat-name">Design</span>
+            <span class="cat-count">438 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-biz" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <span class="cat-name">Business</span>
+            <span class="cat-count">507 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-mkt" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 10v4a1 1 0 0 0 1 1h2l5 4V5L6 9H4a1 1 0 0 0-1 1Z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <span class="cat-name">Marketing</span>
+            <span class="cat-count">361 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-photo" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="cat-name">Photography</span>
+            <span class="cat-count">248 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-music" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/></svg></span>
+            <span class="cat-name">Music</span>
+            <span class="cat-count">193 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-data" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 20V4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="7" y="12" width="3.4" height="6" rx="1" fill="currentColor"/><rect x="12.5" y="8" width="3.4" height="10" rx="1" fill="currentColor"/><rect x="18" y="5" width="3.4" height="13" rx="1" fill="currentColor"/></svg></span>
+            <span class="cat-name">Data Science</span>
+            <span class="cat-count">274 courses</span>
+          </a></li>
+          <li><a class="cat-tile" href="#courses">
+            <span class="cat-ico ico-lang" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.8 5.4 3.8 8.5S14.4 18.2 12 20.5C9.6 18.2 8.2 15.1 8.2 12S9.6 5.8 12 3.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+            <span class="cat-name">Languages</span>
+            <span class="cat-count">156 courses</span>
+          </a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ POPULAR COURSES ============ -->
+    <section class="section courses" id="courses" aria-labelledby="courses-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Most enrolled this month</p>
+            <h2 id="courses-title">Popular courses learners can't stop recommending</h2>
+          </div>
+          <a class="link-arrow" href="#">View all 4,200 courses
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Filter courses by category">
+          <button class="filter-pill is-active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-pill" data-filter="development" aria-pressed="false">Development</button>
+          <button class="filter-pill" data-filter="design" aria-pressed="false">Design</button>
+          <button class="filter-pill" data-filter="business" aria-pressed="false">Business</button>
+          <button class="filter-pill" data-filter="marketing" aria-pressed="false">Marketing</button>
+          <button class="filter-pill" data-filter="photography" aria-pressed="false">Photography</button>
+          <button class="filter-pill" data-filter="music" aria-pressed="false">Music</button>
+          <button class="filter-pill" data-filter="data" aria-pressed="false">Data Science</button>
+          <button class="filter-pill" data-filter="language" aria-pressed="false">Languages</button>
+        </div>
+
+        <div class="course-grid" id="courseGrid">
+
+          <article class="course-card" data-category="development">
+            <div class="cc-media">
+              <img src="img/c1.jpg" width="640" height="440" alt="Developer writing React and Node.js code on a laptop" loading="lazy">
+              <span class="cc-tag">Development</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Full-Stack Web Development with React &amp; Node</h3>
+              <p class="cc-meta">By Marcus Reyes · 41 lessons · 12h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 <small>(3,204)</small></span>
+                <span class="cc-price">$89</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="design">
+            <div class="cc-media">
+              <img src="img/c2.jpg" width="640" height="440" alt="Designer sketching wireframes and prototypes at a desk" loading="lazy">
+              <span class="cc-tag">Design</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">UX Design Foundations: From Wireframe to Prototype</h3>
+              <p class="cc-meta">By Priya Nair · 33 lessons · 9h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 <small>(2,116)</small></span>
+                <span class="cc-price">$74</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="data">
+            <div class="cc-media">
+              <img src="img/c7.jpg" width="640" height="440" alt="Data analyst reviewing charts in a research laboratory" loading="lazy">
+              <span class="cc-tag">Data Science</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Data Science with Python &amp; Pandas</h3>
+              <p class="cc-meta">By Aisha Rahman · 52 lessons · 15h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 <small>(4,012)</small></span>
+                <span class="cc-price">$94</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="photography">
+            <div class="cc-media">
+              <img src="img/c4.jpg" width="640" height="440" alt="Photographer adjusting a camera during a studio shoot" loading="lazy">
+              <span class="cc-tag">Photography</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Photography Masterclass: Light, Story &amp; Edit</h3>
+              <p class="cc-meta">By Lena Vogt · 28 lessons · 8h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 <small>(2,780)</small></span>
+                <span class="cc-price">$64</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="marketing">
+            <div class="cc-media">
+              <img src="img/c3.jpg" width="640" height="440" alt="Marketing team reviewing an analytics dashboard in an office" loading="lazy">
+              <span class="cc-tag">Marketing</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Modern Digital Marketing: SEO, Ads &amp; Analytics</h3>
+              <p class="cc-meta">By Daniel Okafor · 37 lessons · 10h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.7 <small>(1,540)</small></span>
+                <span class="cc-price">$69</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="business">
+            <div class="cc-media">
+              <img src="img/c5.jpg" width="640" height="440" alt="Founders discussing startup finance around a meeting table" loading="lazy">
+              <span class="cc-tag">Business</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Startup Finance &amp; Fundraising Essentials</h3>
+              <p class="cc-meta">By Sofia Marchetti · 24 lessons · 7h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.6 <small>(988)</small></span>
+                <span class="cc-price">$99</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="music">
+            <div class="cc-media">
+              <img src="img/c6.jpg" width="640" height="440" alt="Producer arranging a track inside a home music studio" loading="lazy">
+              <span class="cc-tag">Music</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Music Production in Ableton Live 12</h3>
+              <p class="cc-meta">By Theo Blake · 45 lessons · 11h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 <small>(1,347)</small></span>
+                <span class="cc-price">$79</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="language">
+            <div class="cc-media">
+              <img src="img/c8.jpg" width="640" height="440" alt="Open books and study notes in a warm library setting" loading="lazy">
+              <span class="cc-tag">Languages</span>
+            </div>
+            <div class="cc-body">
+              <h3 class="cc-title">Conversational Spanish: Speak from Day One</h3>
+              <p class="cc-meta">By Carla Mendes · 40 lessons · 9h</p>
+              <div class="cc-foot">
+                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.7 <small>(2,905)</small></span>
+                <span class="cc-price cc-free">Free</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <p class="grid-empty" id="gridEmpty" hidden>No courses in that category yet — try another filter.</p>
+      </div>
+    </section>
+
+    <!-- ============ STATS BAND ============ -->
+    <section class="section stats-band" aria-label="Campus by the numbers">
+      <div class="container">
+        <ul class="stats-grid reveal">
+          <li class="stat">
+            <span class="stat-num" data-count="92000" data-suffix="+">0</span>
+            <span class="stat-label">Active learners</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-count="4200" data-suffix="+">0</span>
+            <span class="stat-label">Expert-led courses</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-count="380" data-suffix="">0</span>
+            <span class="stat-label">Verified instructors</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-count="1.2" data-suffix="M" data-decimals="1">0</span>
+            <span class="stat-label">Certificates awarded</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ INSTRUCTORS ============ -->
+    <section class="section instructors" id="instructors" aria-labelledby="inst-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Meet the mentors</p>
+            <h2 id="inst-title">Learn from instructors who've done the work</h2>
+          </div>
+          <p class="section-sub">Every mentor on Campus is vetted for real-world experience — not just a nice slide deck.</p>
+        </div>
+
+        <ul class="inst-grid reveal">
+          <li class="inst-card">
+            <div class="inst-avatar"><img src="img/t1.jpg" width="300" height="300" alt="Portrait of instructor Marcus Reyes" loading="lazy"></div>
+            <h3 class="inst-name">Marcus Reyes</h3>
+            <p class="inst-role">Software Engineering</p>
+            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 18,400 students</p>
+          </li>
+          <li class="inst-card">
+            <div class="inst-avatar"><img src="img/t2.jpg" width="300" height="300" alt="Portrait of instructor Priya Nair" loading="lazy"></div>
+            <h3 class="inst-name">Priya Nair</h3>
+            <p class="inst-role">Product &amp; UX Design</p>
+            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 · 12,900 students</p>
+          </li>
+          <li class="inst-card">
+            <div class="inst-avatar"><img src="img/t3.jpg" width="300" height="300" alt="Portrait of instructor Aisha Rahman" loading="lazy"></div>
+            <h3 class="inst-name">Aisha Rahman</h3>
+            <p class="inst-role">Data Science</p>
+            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 24,100 students</p>
+          </li>
+          <li class="inst-card">
+            <div class="inst-avatar"><img src="img/t4.jpg" width="300" height="300" alt="Portrait of instructor Lena Vogt" loading="lazy"></div>
+            <h3 class="inst-name">Lena Vogt</h3>
+            <p class="inst-role">Photography &amp; Film</p>
+            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 9,600 students</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head center">
+          <div>
+            <p class="kicker">Three steps, zero friction</p>
+            <h2 id="how-title">How Campus works</h2>
+          </div>
+        </div>
+
+        <ol class="steps reveal">
+          <li class="step">
+            <span class="step-num">1</span>
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <h3 class="step-title">Find your course</h3>
+            <p class="step-text">Search 4,200+ courses or follow a guided track. Preview any lesson before you commit a single minute.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></svg></span>
+            <h3 class="step-title">Learn at your pace</h3>
+            <p class="step-text">Stream lessons on any device, download resources, and build real projects with feedback from your mentor.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 4h8v7a4 4 0 0 1-8 0V4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 6H5.5A1.5 1.5 0 0 0 4 7.5C4 9.4 5.6 10.5 7.5 10.5M16 6h2.5A1.5 1.5 0 0 1 20 7.5c0 1.9-1.6 3-3.5 3M9.5 16.5 9 20h6l-.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="step-title">Earn your certificate</h3>
+            <p class="step-text">Pass the final project and unlock a verified certificate you can share to LinkedIn in a single tap.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section testimonials" aria-labelledby="tst-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Learner stories</p>
+            <h2 id="tst-title">92,000 people picked up something new</h2>
+          </div>
+          <div class="slider-nav">
+            <button class="slider-btn" id="tstPrev" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="slider-btn" id="tstNext" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="tst-track" id="tstTrack" tabindex="0" aria-label="Testimonials, scrollable">
+          <figure class="tst-card">
+            <span class="tst-quote" aria-hidden="true">“</span>
+            <blockquote>I went from wrestling with spreadsheets to shipping a live data dashboard in nine weeks. The projects are what made it actually stick.</blockquote>
+            <figcaption><strong>Nomsa D.</strong><span>Data Analyst · Cape Town</span></figcaption>
+          </figure>
+          <figure class="tst-card">
+            <span class="tst-quote" aria-hidden="true">“</span>
+            <blockquote>The UX track landed me my first design job. My mentor reviewed every single assignment and pushed my portfolio to a place I'm proud of.</blockquote>
+            <figcaption><strong>Kevin L.</strong><span>Junior Product Designer · Toronto</span></figcaption>
+          </figure>
+          <figure class="tst-card">
+            <span class="tst-quote" aria-hidden="true">“</span>
+            <blockquote>I run a small bakery and finally understand my own marketing. I doubled my weekend orders after one weekend of lessons. Worth every cent.</blockquote>
+            <figcaption><strong>Amara T.</strong><span>Bakery Owner · Lagos</span></figcaption>
+          </figure>
+          <figure class="tst-card">
+            <span class="tst-quote" aria-hidden="true">“</span>
+            <blockquote>Best money I've spent on myself in years. The Spanish course had me chatting confidently on my trip to Madrid — from day one, exactly like it promised.</blockquote>
+            <figcaption><strong>Jonas W.</strong><span>Product Manager · Berlin</span></figcaption>
+          </figure>
+        </div>
+        <div class="tst-dots" id="tstDots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============ BECOME AN INSTRUCTOR CTA ============ -->
+    <section class="section become" aria-labelledby="become-title">
+      <div class="container">
+        <div class="become-card">
+          <div class="become-media">
+            <img src="img/cta.jpg" width="900" height="1000" alt="Instructor teaching a lesson in front of a classroom" loading="lazy">
+          </div>
+          <div class="become-body">
+            <p class="kicker kicker-light">Teach on Campus</p>
+            <h2 id="become-title">Turn what you know into a course thousands will take.</h2>
+            <p class="become-lead">Share your craft, reach a global classroom, and get paid for it. Our course-builder does the heavy lifting — you bring the expertise.</p>
+            <ul class="become-list">
+              <li><span class="bl-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reach 92,000+ motivated learners</li>
+              <li><span class="bl-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Keep 70% of every enrollment</li>
+              <li><span class="bl-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Free recording &amp; course-builder tools</li>
+            </ul>
+            <div class="become-actions">
+              <a class="btn btn-gold" href="#">Start teaching</a>
+              <a class="link-arrow link-arrow-dark" href="#">See how payouts work
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand brand-light" href="index.html" aria-label="Campus home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" role="img" aria-hidden="true">
+                <path d="M12 3.2 22.5 8 12 12.8 1.5 8 12 3.2Z" fill="currentColor"/>
+                <path d="M6 10.4V15c0 1.7 2.9 3.1 6 3.1s6-1.4 6-3.1v-4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M22.5 8v4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <circle cx="22.5" cy="13.2" r="1.15" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="brand-name">Campus</span>
+          </a>
+          <p class="footer-blurb">Expert-led courses, real projects, and certificates that mean something — for anyone with a reason to learn.</p>
+          <form class="footer-signup" id="signupForm" novalidate>
+            <label class="visually-hidden" for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email">
+            <button class="btn btn-brand" type="submit">Get weekly picks</button>
+          </form>
+          <p class="signup-note" id="signupNote" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="#courses">All courses</a></li>
+              <li><a href="#categories">Categories</a></li>
+              <li><a href="#instructors">Instructors</a></li>
+              <li><a href="#">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Campus</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Help center</a></li>
+              <li><a href="#">Become an instructor</a></li>
+              <li><a href="#">Terms of use</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Campus Learning Co. All rights reserved.</p>
+        <ul class="footer-social">
+          <li><a href="#" aria-label="Campus on X">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 4h4l4 5.5L16.5 4H20l-6 8 6.5 8H16l-4.3-5.8L7 20H3.5l6.3-8.4L4 4Z" fill="currentColor"/></svg>
+          </a></li>
+          <li><a href="#" aria-label="Campus on Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1.1" fill="currentColor"/></svg>
+          </a></li>
+          <li><a href="#" aria-label="Campus on YouTube">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 9.3v5.4l4.6-2.7-4.6-2.7Z" fill="currentColor"/></svg>
+          </a></li>
+          <li><a href="#" aria-label="Campus on LinkedIn">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V17M8 7.6v.1M11.6 17v-3.7c0-1.5 2.4-1.6 2.4 0V17M11.6 17v-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </a></li>
+        </ul>
+        <p class="footer-credit">Free template by <a href="https://uicookies.com" rel="noopener">uiCookies</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
