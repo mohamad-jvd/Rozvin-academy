@@ -1017,3 +1017,108 @@ img { max-width: 100%; height: auto; display: block; }
   .inst-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2.05rem; }
 }
+
+
+.cc-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.cc-duration {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #f4f6f9;
+    border-radius: 8px;
+    color: #374151;
+    font-size: 14px;
+}
+
+.cc-detail-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.cc-topics h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cc-topics ol {
+    margin: 0;
+    padding-right: 22px;
+    padding-left: 0;
+}
+
+.cc-topics li {
+    margin-bottom: 6px;
+    line-height: 1.8;
+    font-size: 13px;
+    color: #5b6472;
+}
+
+.cc-topics li:last-child {
+    margin-bottom: 0;
+}
+
+.cc-topics details {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cc-topics summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #263445;
+}
+
+.cc-topics summary::-webkit-details-marker {
+    display: none;
+}
+
+.cc-topics summary::after {
+    content: "＋";
+    font-size: 17px;
+    color: #2563eb;
+    flex-shrink: 0;
+}
+
+.cc-topics details[open] summary::after {
+    content: "−";
+}
+
+.cc-topics-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.cc-topics ol {
+    margin: 0;
+    padding: 8px 36px 12px 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.cc-topics li {
+    padding: 5px 0;
+    line-height: 1.8;
+    font-size: 13px;
+    color: #5b6472;
+}
+
+.cc-topics li:last-child {
+    margin-bottom: 0;
+}
