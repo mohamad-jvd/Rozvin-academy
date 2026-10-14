@@ -60,6 +60,11 @@ class Course(models.Model):
         verbose_name="قیمت دوره"
     )
 
+    is_popular = models.BooleanField(
+        default=False,
+        verbose_name="نمایش در دوره‌های پرطرفدار"
+    )
+
     instructor = models.ForeignKey(
         Instructor,
         on_delete=models.CASCADE,
@@ -102,3 +107,35 @@ class CourseTopic(models.Model):
         ordering = ["order"]
         verbose_name = "سرفصل"
         verbose_name_plural = "سرفصل‌ها"
+
+class SiteBanner(models.Model):
+    image = models.ImageField(
+        upload_to="banners/",
+        verbose_name="تصویر بنر"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="بنر فعال"
+    )
+
+    def __str__(self):
+        return "بنر سایت"
+
+    class Meta:
+        verbose_name = "بنر پایین سایت"
+        verbose_name_plural = "بنر پایین سایت"
+
+
+class SiteSettings(models.Model):
+    telegram_url = models.URLField(
+        verbose_name="لینک کانال تلگرام",
+        help_text="لینک کامل کانال تلگرام را وارد کنید.",
+        default="https://t.me/YourChannel",
+    )
+
+    class Meta:
+        verbose_name = "لینک تلگرام"
+        verbose_name_plural = "لینک تلگرام"
+
+    def __str__(self):
+        return "لینک تلگرام"

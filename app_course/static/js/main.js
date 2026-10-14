@@ -1,5 +1,5 @@
 /* =====================================================================
-   Campus — main.js
+   Rozvin — main.js
    Vanilla JS only. Each feature is one guard-claused init function.
    ===================================================================== */
 (function () {
@@ -77,66 +77,85 @@
   }
 
   /* ---------- hero search (front-end only) ---------- */
+ 
   function initSearch() {
-    var form = document.getElementById("searchBar");
-    var note = document.getElementById("searchNote");
-    var input = document.getElementById("q");
-    var select = document.getElementById("cat");
-    var chips = document.querySelectorAll(".hero-chips .chip");
-    if (!form || !note || !input) return;
+      var form = document.getElementById("searchBar");
+      var input = document.getElementById("q");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var term = input.value.trim();
-      var cat = select ? select.value : "";
-      if (!term && !cat) {
-        note.style.color = "";
-        note.textContent = "Type a topic or pick a category to see matching courses.";
-        input.focus();
-        return;
-      }
-      var label = term || cat;
-      var scope = cat ? " in " + cat : "";
-      note.textContent = "Great pick — showing courses for “" + label + "”" + (term && cat ? scope : "") + ".";
-    });
+      if (!form || !input) return;
 
-    Array.prototype.forEach.call(chips, function (chip) {
-      chip.addEventListener("click", function () {
-        input.value = chip.textContent.trim();
-        input.focus();
+      form.addEventListener("submit", function (e) {
+          var term = input.value.trim();
+
+          if (!term) {
+              e.preventDefault();
+              input.focus();
+              return;
+          }
+
+          // اجازه بده فرم به Django ارسال شود
       });
-    });
   }
+
 
   /* ---------- course category filter ---------- */
-  function initCourseFilter() {
-    var bar = document.querySelector(".filter-bar");
-    var grid = document.getElementById("courseGrid");
-    var empty = document.getElementById("gridEmpty");
-    if (!bar || !grid) return;
-    var pills = bar.querySelectorAll(".filter-pill");
-    var cards = grid.querySelectorAll(".course-card");
+  
+/* ---------- course category filter ---------- */
+function initCourseFilter() {
+      var bar = document.querySelector(".filter-bar");
+      var grid = document.getElementById("courseGrid");
+      var empty = document.getElementById("gridEmpty");
 
-    bar.addEventListener("click", function (e) {
-      var pill = e.target.closest(".filter-pill");
-      if (!pill) return;
-      var filter = pill.getAttribute("data-filter");
+      if (!bar || !grid) return;
 
-      Array.prototype.forEach.call(pills, function (p) {
-        var active = p === pill;
-        p.classList.toggle("is-active", active);
-        p.setAttribute("aria-pressed", active ? "true" : "false");
+      var pills = bar.querySelectorAll(".filter-pill");
+      var cards = grid.querySelectorAll(".course-card");
+
+      function applyFilter(filter) {
+          var shown = 0;
+
+          Array.prototype.forEach.call(cards, function (card) {
+              var match;
+
+              if (filter === "popular") {
+                  match = card.getAttribute("data-popular") === "true";
+              } else if (filter === "all") {
+                  match = true;
+              } else {
+                  match = card.getAttribute("data-category") === filter;
+              }
+
+              card.classList.toggle("is-hidden", !match);
+
+              if (match) {
+                  shown++;
+              }
+          });
+
+          if (empty) {
+              empty.hidden = shown !== 0;
+          }
+      }
+
+      bar.addEventListener("click", function (e) {
+          var pill = e.target.closest(".filter-pill");
+          if (!pill) return;
+
+          var filter = pill.getAttribute("data-filter");
+
+          Array.prototype.forEach.call(pills, function (p) {
+              var active = p === pill;
+              p.classList.toggle("is-active", active);
+              p.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+
+          applyFilter(filter);
       });
 
-      var shown = 0;
-      Array.prototype.forEach.call(cards, function (card) {
-        var match = filter === "all" || card.getAttribute("data-category") === filter;
-        card.classList.toggle("is-hidden", !match);
-        if (match) { shown++; }
-      });
-      if (empty) { empty.hidden = shown !== 0; }
-    });
+      // نمایش دوره‌های پرطرفدار هنگام باز شدن صفحه
+      applyFilter("popular");
   }
+
 
   /* ---------- animated stat counters ---------- */
   function initCounters() {
@@ -309,3 +328,16 @@
     init();
   }
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+      var results = document.getElementById("searchResults");
+
+      if (results) {
+          setTimeout(function () {
+              results.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+              });
+          }, 100);
+      }
+  });

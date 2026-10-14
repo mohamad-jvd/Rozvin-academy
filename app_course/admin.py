@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Instructor, Course, CourseTopic, Category
+from .models import Instructor, Course, CourseTopic, Category, SiteBanner, SiteSettings
 
 
 class CourseTopicInline(admin.TabularInline):
@@ -28,6 +28,7 @@ class CourseAdmin(admin.ModelAdmin):
         "duration",
         "category_obj",
         "price",
+        "is_popular",
     )
     search_fields = ("title", "description")
     list_filter = ("category_obj", "instructor")
@@ -38,6 +39,7 @@ class CourseAdmin(admin.ModelAdmin):
         "image",
         "category_obj",
         "price",
+        "is_popular",
         "instructor",
     )
     inlines = [CourseTopicInline]
@@ -48,3 +50,21 @@ class CourseTopicAdmin(admin.ModelAdmin):
     list_display = ("title", "course", "order")
     list_filter = ("course",)
     search_fields = ("title",)
+
+@admin.register(SiteBanner)
+class SiteBannerAdmin(admin.ModelAdmin):
+    list_display = ("id", "is_active")
+    list_filter = ("is_active",)
+
+    def has_module_permission(self, request):
+        return super().has_module_permission(request)
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    list_display = ("telegram_url",)
+
+    def has_add_permission(self, request):
+        # فقط یک رکورد تنظیمات اجازه ساخت دارد
+        if SiteSettings.objects.exists():
+            return False
+        return super().has_add_permission(request)

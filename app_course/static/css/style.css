@@ -1,5 +1,5 @@
 /* =====================================================================
-   Campus — Online Course Platform
+   Rozvin — Online Course Platform
    Design layer (custom). Bootstrap 5 loads first as a light reset/grid.
    Palette "Study Hall": chalkboard pine + confident green + marigold.
    Type: Bricolage Grotesque (display) / Mulish (body)
@@ -1121,4 +1121,83 @@ img { max-width: 100%; height: auto; display: block; }
 
 .cc-topics li:last-child {
     margin-bottom: 0;
+}
+
+
+/* Dynamic image-only site banner */
+.become .become-card {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.become .become-media {
+    width: 100%;
+    height: auto;
+}
+
+.become .become-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.search-results-section {
+    margin-bottom: 32px;
+}
+
+.search-results-section h2 {
+    margin-bottom: 20px;
+}
+
+.search-no-results {
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    background: #f5f7fa;
+}
+
+.search-results-section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.search-results-section .section-head {
+    margin-bottom: 24px;
+}
+
+.search-no-results {
+    padding: 24px;
+    text-align: center;
+    border-radius: 12px;
+    background: #f5f7fa;
+}
+
+.search-results-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.clear-search {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid #1e7a50;
+    border-radius: 8px;
+    background-color: #1e7a50;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.clear-search:hover {
+    background-color: #17613f;
+    border-color: #17613f;
+    color: #ffffff;
 }
