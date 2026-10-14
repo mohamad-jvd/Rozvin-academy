@@ -313,3 +313,35 @@ class WorkExperience(models.Model):
 
     def __str__(self):
         return f"{self.job_title} - {self.company}"
+
+
+
+class SiteStatistic(models.Model):
+    title = models.CharField(max_length=100, verbose_name="عنوان آمار")
+    value = models.DecimalField(
+        max_digits=12,
+        decimal_places=1,
+        default=0,
+        verbose_name="مقدار"
+    )
+    suffix = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name="پسوند (مثلاً + یا ساعت)"
+    )
+    order = models.PositiveIntegerField(
+        default=1,
+        verbose_name="ترتیب نمایش"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="نمایش در سایت"
+    )
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "آمار سایت"
+        verbose_name_plural = "آمارهای سایت"
+
+    def __str__(self):
+        return self.title

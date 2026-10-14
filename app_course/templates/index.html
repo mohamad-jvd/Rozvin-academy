@@ -272,28 +272,25 @@
     </section>
 
     <!-- ============ STATS BAND ============ -->
-    <section class="section stats-band" aria-label="Campus by the numbers">
-      <div class="container">
-        <ul class="stats-grid reveal">
-          <li class="stat">
-            <span class="stat-num" data-count="92000" data-suffix="+">0</span>
-            <span class="stat-label">Active learners</span>
-          </li>
-          <li class="stat">
-            <span class="stat-num" data-count="4200" data-suffix="+">0</span>
-            <span class="stat-label">Expert-led courses</span>
-          </li>
-          <li class="stat">
-            <span class="stat-num" data-count="380" data-suffix="">0</span>
-            <span class="stat-label">Verified instructors</span>
-          </li>
-          <li class="stat">
-            <span class="stat-num" data-count="1.2" data-suffix="M" data-decimals="1">0</span>
-            <span class="stat-label">Certificates awarded</span>
-          </li>
-        </ul>
-      </div>
-    </section>
+    <section class="section stats-band" aria-label="آمار سایت">
+  <div class="container">
+    <ul class="stats-grid reveal">
+      {% for stat in site_statistics %}
+        <li class="stat">
+          <span
+            class="stat-num"
+            data-count="{{ stat.value }}"
+            data-suffix="{{ stat.suffix }}"
+            data-decimals="1"
+          >0</span>
+          <span class="stat-label">{{ stat.title }}</span>
+        </li>
+      {% empty %}
+        <li>هنوز آماری ثبت نشده است.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
 
     <!-- ============ INSTRUCTORS ============ -->
     <section class="section instructors" id="instructors" aria-labelledby="inst-title">

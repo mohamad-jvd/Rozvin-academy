@@ -10,6 +10,7 @@ from .models import (
     Instructor,
     Education,
     WorkExperience,
+     SiteStatistic,
 )
 
 
@@ -29,6 +30,7 @@ def index(request):
     hero_content = HeroContent.objects.first()
     testimonials = Testimonial.objects.filter(is_active=True)
     instructors = Instructor.objects.all()
+    site_statistics = SiteStatistic.objects.filter(is_active=True)
 
     return render(request, "index.html", {
         "courses": courses,
@@ -38,6 +40,7 @@ def index(request):
         "hero_content": hero_content,
         "testimonials": testimonials,
         "instructors": instructors,
+        "site_statistics": site_statistics,
     })
 
 

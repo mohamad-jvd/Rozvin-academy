@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Course, CourseTopic, Banner, Category, TrendingTopic, HeroContent, Testimonial
+from .models import Course, CourseTopic, Banner, Category, TrendingTopic, HeroContent, Testimonial,SiteStatistic
 
 
 class CourseTopicInline(admin.TabularInline):
@@ -81,7 +81,13 @@ class TestimonialAdmin(admin.ModelAdmin):
     ordering = ("order",)
 
 
-
+@admin.register(SiteStatistic)
+class SiteStatisticAdmin(admin.ModelAdmin):
+    list_display = ("title", "value", "suffix", "order", "is_active")
+    list_editable = ("value", "suffix", "order", "is_active")
+    search_fields = ("title",)
+    list_filter = ("is_active",)
+    ordering = ("order",)
 
 
 
