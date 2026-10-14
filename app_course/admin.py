@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Instructor, Course, CourseTopic
+from .models import Instructor, Course, CourseTopic,Banner,Category,TrendingTopic,HeroContent
 
 
 class CourseTopicInline(admin.TabularInline):
