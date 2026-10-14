@@ -58,3 +58,84 @@ class CourseTopic(models.Model):
         ordering = ["order"]
         verbose_name = "سرفصل"
         verbose_name_plural = "سرفصل‌ها"
+
+
+
+class Banner(models.Model):
+    title = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name="عنوان بنر"
+    )
+    image = models.ImageField(
+        upload_to="banners/",
+        verbose_name="تصویر بنر"
+    )
+    link = models.URLField(
+        blank=True,
+        verbose_name="لینک مقصد"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="فعال"
+    )
+
+    def __str__(self):
+        return self.title or f"بنر {self.pk}"
+
+    class Meta:
+        verbose_name = "بنر"
+        verbose_name_plural = "بنرها"
+
+
+
+
+class TrendingTopic(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name="عنوان موضوع"
+    )
+    link = models.URLField(
+        blank=True,
+        verbose_name="لینک مقصد"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="فعال"
+    )
+    order = models.PositiveIntegerField(
+        default=1,
+        verbose_name="ترتیب نمایش"
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "موضوع ترند"
+        verbose_name_plural = "موضوعات ترند"
+
+
+
+
+class HeroContent(models.Model):
+    eyebrow = models.CharField(
+        max_length=250,
+        verbose_name="متن بالای عنوان"
+    )
+    title = models.CharField(
+        max_length=250,
+        verbose_name="عنوان اصلی"
+    )
+    description = models.TextField(
+        verbose_name="توضیحات زیر عنوان"
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "محتوای بنر اصلی"
+        verbose_name_plural = "محتوای بنر اصلی"
+

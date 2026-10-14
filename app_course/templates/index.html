@@ -55,61 +55,101 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
+   
+<section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+
+        <!-- ستون متن -->
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span>4,200+ courses · 50+ topics · new lessons weekly</p>
-          <h1 id="hero-title">Skills worth showing off, taught by people worth learning from.</h1>
-          <p class="hero-lead">Campus pairs you with expert-led video courses, real hands-on projects, and a certificate you'll actually want to share. Start free — upgrade only when you're hooked.</p>
+            {% if hero_content %}
+                <p class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    {{ hero_content.eyebrow }}
+                </p>
 
-          <form class="search-bar" id="searchBar" role="search" novalidate>
-            <div class="search-field">
-              <span class="search-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              </span>
-              <label class="visually-hidden" for="q">What do you want to learn?</label>
-              <input type="text" id="q" name="q" placeholder="What do you want to learn?" autocomplete="off">
+                <h1 id="hero-title">
+                    {{ hero_content.title }}
+                </h1>
+
+                <p class="hero-lead">
+                    {{ hero_content.description }}
+                </p>
+            {% endif %}
+
+            <form class="search-bar" id="searchBar" role="search" novalidate>
+                <div class="search-field">
+                    <span class="search-ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <circle cx="11" cy="11" r="7" fill="none"
+                                stroke="currentColor" stroke-width="2"/>
+                            <path d="m20 20-3.2-3.2" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+
+                    <label class="visually-hidden" for="q">
+                        What do you want to learn?
+                    </label>
+                    <input
+                        type="text"
+                        id="q"
+                        name="q"
+                        placeholder="What do you want to learn?"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <button class="btn btn-brand search-submit" type="submit">
+                    Find courses
+                </button>
+            </form>
+
+            <p class="search-note" id="searchNote"
+                role="status" aria-live="polite"></p>
+
+            <div class="hero-chips">
+                <span class="chips-label">Trending:</span>
+
+                {% for topic in trending_topics %}
+                    {% if topic.link %}
+                        <a class="chip" href="{{ topic.link }}">
+                            {{ topic.title }}
+                        </a>
+                    {% else %}
+                        <button class="chip" type="button">
+                            {{ topic.title }}
+                        </button>
+                    {% endif %}
+                {% endfor %}
             </div>
-            <label class="visually-hidden" for="cat">Category</label>
-          
-            <button class="btn btn-brand search-submit" type="submit">Find courses</button>
-          </form>
-          <p class="search-note" id="searchNote" role="status" aria-live="polite"></p>
-
-          <div class="hero-chips">
-            <span class="chips-label">Trending:</span>
-            <button class="chip" type="button">Python</button>
-            <button class="chip" type="button">UX Design</button>
-            <button class="chip" type="button">Excel</button>
-            <button class="chip" type="button">Public Speaking</button>
-          </div>
         </div>
 
+        <!-- ستون بنر -->
         <div class="hero-visual" aria-hidden="false">
-          <div class="hero-frame">
-            <img src="{% static "img/hero.jpg" %}" width="1280" height="720" alt="Students learning together with laptops in a bright classroom" loading="eager">
-          </div>
-          <div class="float-card float-rating">
-            <span class="fc-star" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg>
-            </span>
-            <div>
-              <strong>4.8 / 5</strong>
-              <small>from 92,000 learners</small>
-            </div>
-          </div>
-          <div class="float-card float-cert">
-            <span class="fc-check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <strong>Certificate earned</strong>
-              <small>Data Science track</small>
-            </div>
-          </div>
+            {% if banner %}
+                <div class="hero-frame">
+                    {% if banner.link %}
+                        <a href="{{ banner.link }}">
+                            <img
+                                src="{{ banner.image.url }}"
+                                alt="{{ banner.title|default:'بنر سایت' }}"
+                                loading="eager"
+                            >
+                        </a>
+                    {% else %}
+                        <img
+                            src="{{ banner.image.url }}"
+                            alt="{{ banner.title|default:'بنر سایت' }}"
+                            loading="eager"
+                        >
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
-      </div>
-    </section>
+
+    </div>
+</section>
+
 
     <!-- ============ CATEGORIES ============ -->
 
