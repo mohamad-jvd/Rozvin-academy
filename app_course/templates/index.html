@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -166,140 +167,106 @@
         </div>
 
         <div class="filter-bar" role="tablist" aria-label="Filter courses by category">
-          <button class="filter-pill is-active" data-filter="all" aria-pressed="true">All</button>
-          <button class="filter-pill" data-filter="development" aria-pressed="false">Development</button>
-          <button class="filter-pill" data-filter="design" aria-pressed="false">Design</button>
-          <button class="filter-pill" data-filter="business" aria-pressed="false">Business</button>
-          <button class="filter-pill" data-filter="marketing" aria-pressed="false">Marketing</button>
-          <button class="filter-pill" data-filter="photography" aria-pressed="false">Photography</button>
-          <button class="filter-pill" data-filter="music" aria-pressed="false">Music</button>
-          <button class="filter-pill" data-filter="data" aria-pressed="false">Data Science</button>
-          <button class="filter-pill" data-filter="language" aria-pressed="false">Languages</button>
+            <button class="filter-pill is-active"
+                    data-filter="all"
+                    aria-pressed="true">All</button>
+
+            {% for category in categories %}
+                <button class="filter-pill"
+                        data-filter="{{ category.slug }}"
+                        aria-pressed="false">
+                    {{ category.name }}
+                </button>
+            {% endfor %}
         </div>
 
+        
         <div class="course-grid" id="courseGrid">
+            {% for course in courses %}
+                <a href="https://t.me/YourChannel"
+                  class="course-card"
+                  data-category="{{ course.category_obj.slug|default:'' }}"
+                  target="_blank"
+                  rel="noopener noreferrer">
 
-          <article class="course-card" data-category="development">
-            <div class="cc-media">
-              <img src="{% static "img/c1.jpg" %}" width="640" height="440" alt="Developer writing React and Node.js code on a laptop" loading="lazy">
-              <span class="cc-tag">Development</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Full-Stack Web Development with React &amp; Node</h3>
-              <p class="cc-meta">By Marcus Reyes · 41 lessons · 12h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 <small>(3,204)</small></span>
-                <span class="cc-price">$89</span>
-              </div>
-            </div>
-          </article>
+                    <div class="cc-media">
+                        {% if course.image %}
+                            <img src="{{ course.image.url }}"
+                                width="640"
+                                height="440"
+                                alt="{{ course.title }}"
+                                loading="lazy">
+                        {% else %}
+                            <img src="{% static 'img/c1.jpg' %}"
+                                width="640"
+                                height="440"
+                                alt="{{ course.title }}"
+                                loading="lazy">
+                        {% endif %}
 
-          <article class="course-card" data-category="design">
-            <div class="cc-media">
-              <img src="{% static "img/c2.jpg" %}" width="640" height="440" alt="Designer sketching wireframes and prototypes at a desk" loading="lazy">
-              <span class="cc-tag">Design</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">UX Design Foundations: From Wireframe to Prototype</h3>
-              <p class="cc-meta">By Priya Nair · 33 lessons · 9h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 <small>(2,116)</small></span>
-                <span class="cc-price">$74</span>
-              </div>
-            </div>
-          </article>
+                        <span class="cc-tag">
+                            {{ course.category_obj.name|default:"بدون دسته‌بندی" }}
+                        </span>
+                    </div>
 
-          <article class="course-card" data-category="data">
-            <div class="cc-media">
-              <img src="{% static "img/c7.jpg" %}" width="640" height="440" alt="Data analyst reviewing charts in a research laboratory" loading="lazy">
-              <span class="cc-tag">Data Science</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Data Science with Python &amp; Pandas</h3>
-              <p class="cc-meta">By Aisha Rahman · 52 lessons · 15h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 <small>(4,012)</small></span>
-                <span class="cc-price">$94</span>
-              </div>
-            </div>
-          </article>
+                    <div class="cc-body">
+                        <h3 class="cc-title">{{ course.title }}</h3>
 
-          <article class="course-card" data-category="photography">
-            <div class="cc-media">
-              <img src="{% static "img/c4.jpg" %}" width="640" height="440" alt="Photographer adjusting a camera during a studio shoot" loading="lazy">
-              <span class="cc-tag">Photography</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Photography Masterclass: Light, Story &amp; Edit</h3>
-              <p class="cc-meta">By Lena Vogt · 28 lessons · 8h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 <small>(2,780)</small></span>
-                <span class="cc-price">$64</span>
-              </div>
-            </div>
-          </article>
+                        <p class="cc-meta">
+                            <span>استاد:</span>
+                            {{ course.instructor.first_name }}
+                            {{ course.instructor.last_name }}
+                        </p>
 
-          <article class="course-card" data-category="marketing">
-            <div class="cc-media">
-              <img src="{% static "img/c3.jpg" %}" width="640" height="440" alt="Marketing team reviewing an analytics dashboard in an office" loading="lazy">
-              <span class="cc-tag">Marketing</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Modern Digital Marketing: SEO, Ads &amp; Analytics</h3>
-              <p class="cc-meta">By Daniel Okafor · 37 lessons · 10h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.7 <small>(1,540)</small></span>
-                <span class="cc-price">$69</span>
-              </div>
-            </div>
-          </article>
+                        <div class="cc-details">
 
-          <article class="course-card" data-category="business">
-            <div class="cc-media">
-              <img src="{% static "img/c5.jpg" %}" width="640" height="440" alt="Founders discussing startup finance around a meeting table" loading="lazy">
-              <span class="cc-tag">Business</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Startup Finance &amp; Fundraising Essentials</h3>
-              <p class="cc-meta">By Sofia Marchetti · 24 lessons · 7h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.6 <small>(988)</small></span>
-                <span class="cc-price">$99</span>
-              </div>
-            </div>
-          </article>
+                            <div class="cc-duration">
+                                <span class="cc-detail-icon">◷</span>
+                                <span>{{ course.duration }}</span>
+                            </div>
 
-          <article class="course-card" data-category="music">
-            <div class="cc-media">
-              <img src="{% static "img/c6.jpg" %}" width="640" height="440" alt="Producer arranging a track inside a home music studio" loading="lazy">
-              <span class="cc-tag">Music</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Music Production in Ableton Live 12</h3>
-              <p class="cc-meta">By Theo Blake · 45 lessons · 11h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 <small>(1,347)</small></span>
-                <span class="cc-price">$79</span>
-              </div>
-            </div>
-          </article>
+                            
+                            <div class="cc-topics">
+                                <details>
+                                    <summary>
+                                        <span>مشاهده سرفصل‌های دوره</span>
+                                        <span class="cc-topics-count">{{ course.topics.count }} سرفصل</span>
+                                    </summary>
 
-          <article class="course-card" data-category="language">
-            <div class="cc-media">
-              <img src="{% static "img/c8.jpg" %}" width="640" height="440" alt="Open books and study notes in a warm library setting" loading="lazy">
-              <span class="cc-tag">Languages</span>
-            </div>
-            <div class="cc-body">
-              <h3 class="cc-title">Conversational Spanish: Speak from Day One</h3>
-              <p class="cc-meta">By Carla Mendes · 40 lessons · 9h</p>
-              <div class="cc-foot">
-                <span class="cc-rating"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.7 <small>(2,905)</small></span>
-                <span class="cc-price cc-free">Free</span>
-              </div>
-            </div>
-          </article>
+                                    <ol>
+                                        {% for topic in course.topics.all %}
+                                            <li>{{ topic.title }}</li>
+                                        {% empty %}
+                                            <li>هنوز سرفصلی ثبت نشده است.</li>
+                                        {% endfor %}
+                                    </ol>
+                                </details>
+                            </div>
 
+
+                        </div>
+
+                        <div class="cc-foot">
+                            <span class="cc-rating">
+                                {{ course.description }}
+                            </span>
+
+                            {% if course.price == 0 %}
+                                <span class="cc-price cc-free">رایگان</span>
+                            {% else %}
+                                <span class="cc-price">
+                                    {{ course.price|floatformat:0|intcomma }}
+                                    <span>تومان</span>
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="grid-empty">هنوز دوره‌ای ثبت نشده است.</p>
+            {% endfor %}
         </div>
+
         <p class="grid-empty" id="gridEmpty" hidden>No courses in that category yet — try another filter.</p>
       </div>
     </section>

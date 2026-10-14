@@ -21,11 +21,45 @@ class Instructor(models.Model):
         verbose_name = "استاد"
         verbose_name_plural = "استادها"
 
+from django.utils.text import slugify
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="نام دسته‌بندی")
+    slug = models.SlugField(max_length=120, unique=True, blank=True, verbose_name="شناسه دسته‌بندی")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name, allow_unicode=True)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "دسته‌بندی"
+        verbose_name_plural = "دسته‌بندی‌ها"
 
 class Course(models.Model):
+
     title = models.CharField(max_length=200, verbose_name="نام دوره")
     description = models.TextField(verbose_name="توضیحات دوره")
     duration = models.CharField(max_length=100, verbose_name="مدت زمان دوره")
+
+    image = models.ImageField(
+        upload_to="courses/",
+        blank=True,
+        null=True,
+        verbose_name="عکس دوره"
+    )
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0,
+        verbose_name="قیمت دوره"
+    )
+
     instructor = models.ForeignKey(
         Instructor,
         on_delete=models.CASCADE,
@@ -39,6 +73,16 @@ class Course(models.Model):
     class Meta:
         verbose_name = "دوره"
         verbose_name_plural = "دوره‌ها"
+
+    category_obj = models.ForeignKey(
+        Category,
+        on_delete=models.PROTECT,
+        related_name="courses",
+        null=True,
+        blank=True,
+        verbose_name="دسته‌بندی"
+    )
+
 
 
 class CourseTopic(models.Model):
