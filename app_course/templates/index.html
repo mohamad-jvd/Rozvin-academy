@@ -140,28 +140,32 @@
               <button class="chip" type="button">Public Speaking</button>
             {% endfor %}
           </div>
+        </div>
 
         <!-- ستون بنر -->
-        <div class="hero-visual" aria-hidden="false">
-            {% if banner %}
-                <div class="hero-frame">
-                    {% if banner.link %}
-                        <a href="{{ banner.link }}">
-                            <img
-                                src="{{ banner.image.url }}"
-                                alt="{{ banner.title|default:'بنر سایت' }}"
-                                loading="eager"
-                            >
-                        </a>
-                    {% else %}
-                        <img
-                            src="{{ banner.image.url }}"
-                            alt="{{ banner.title|default:'بنر سایت' }}"
-                            loading="eager"
-                        >
-                    {% endif %}
-                </div>
+       
+<div class="hero-visual" aria-hidden="false">
+    {% if hero_banner %}
+        <div class="hero-frame">
+            {% if hero_banner.link %}
+                <a href="{{ hero_banner.link }}">
+                    <img
+                        src="{{ hero_banner.image.url }}"
+                        alt="{{ hero_banner.title|default:'بنر سایت' }}"
+                        loading="eager"
+                    >
+                </a>
+            {% else %}
+                <img
+                    src="{{ hero_banner.image.url }}"
+                    alt="{{ hero_banner.title|default:'بنر سایت' }}"
+                    loading="eager"
+                >
             {% endif %}
+        </div>
+    {% endif %}
+</div>
+
         </div>
 
     </div>
