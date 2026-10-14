@@ -659,5 +659,26 @@
 
   <script src="{% static "js/vendor/bootstrap.bundle.min.js" %}"></script>
   <script src="{% static "js/main.js" %}"></script>
+  
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("q");
+    const trendingChips = document.querySelectorAll(".hero-chips .chip");
+
+    trendingChips.forEach(function (chip) {
+        chip.addEventListener("click", function (event) {
+            // فقط برای دکمه‌ها؛ لینک‌ها رفتار عادی خودشان را دارند
+            if (chip.tagName.toLowerCase() === "a") {
+                return;
+            }
+
+            event.preventDefault();
+            searchInput.value = chip.textContent.trim();
+            searchInput.focus();
+        });
+    });
+});
+</script>
+
 </body>
 </html>
