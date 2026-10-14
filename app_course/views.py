@@ -6,6 +6,7 @@ from .models import (
     Banner,
     TrendingTopic,
     HeroContent,
+    Testimonial,
 )
 
 
@@ -23,6 +24,7 @@ def index(request):
     ).order_by("order")
 
     hero_content = HeroContent.objects.first()
+    testimonials = Testimonial.objects.filter(is_active=True)
 
     return render(request, "index.html", {
         "courses": courses,
@@ -30,6 +32,7 @@ def index(request):
         "banner": banner,
         "trending_topics": trending_topics,
         "hero_content": hero_content,
+        "testimonials": testimonials,
     })
 
 

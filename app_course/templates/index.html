@@ -369,48 +369,59 @@
     </section>
 
     <!-- ============ TESTIMONIALS ============ -->
-    <section class="section testimonials" aria-labelledby="tst-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="kicker">Learner stories</p>
-            <h2 id="tst-title">92,000 people picked up something new</h2>
-          </div>
-          <div class="slider-nav">
-            <button class="slider-btn" id="tstPrev" aria-label="Previous testimonial">
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="slider-btn" id="tstNext" aria-label="Next testimonial">
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="tst-track" id="tstTrack" tabindex="0" aria-label="Testimonials, scrollable">
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>I went from wrestling with spreadsheets to shipping a live data dashboard in nine weeks. The projects are what made it actually stick.</blockquote>
-            <figcaption><strong>Nomsa D.</strong><span>Data Analyst · Cape Town</span></figcaption>
-          </figure>
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>The UX track landed me my first design job. My mentor reviewed every single assignment and pushed my portfolio to a place I'm proud of.</blockquote>
-            <figcaption><strong>Kevin L.</strong><span>Junior Product Designer · Toronto</span></figcaption>
-          </figure>
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>I run a small bakery and finally understand my own marketing. I doubled my weekend orders after one weekend of lessons. Worth every cent.</blockquote>
-            <figcaption><strong>Amara T.</strong><span>Bakery Owner · Lagos</span></figcaption>
-          </figure>
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>Best money I've spent on myself in years. The Spanish course had me chatting confidently on my trip to Madrid — from day one, exactly like it promised.</blockquote>
-            <figcaption><strong>Jonas W.</strong><span>Product Manager · Berlin</span></figcaption>
-          </figure>
-        </div>
-        <div class="tst-dots" id="tstDots" aria-hidden="true"></div>
+    <!-- ============ TESTIMONIALS ============ -->
+<section class="section testimonials" aria-labelledby="tst-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="kicker">Learner stories</p>
+        <h2 id="tst-title">92,000 people picked up something new</h2>
       </div>
-    </section>
+
+      <div class="slider-nav">
+        <button class="slider-btn" id="tstPrev" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="slider-btn" id="tstNext" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tst-track" id="tstTrack" tabindex="0" aria-label="Testimonials, scrollable">
+      {% for testimonial in testimonials %}
+        <figure class="tst-card">
+          <span class="tst-quote" aria-hidden="true">“</span>
+
+          <blockquote>{{ testimonial.content }}</blockquote>
+
+          <figcaption>
+            {% if testimonial.image %}
+              <img
+                src="{{ testimonial.image.url }}"
+                alt="{{ testimonial.name }}"
+                class="tst-avatar"
+                loading="lazy"
+              >
+            {% endif %}
+
+            <strong>{{ testimonial.name }}</strong>
+            <span>{{ testimonial.role }}</span>
+          </figcaption>
+        </figure>
+      {% empty %}
+        <p>No testimonials available yet.</p>
+      {% endfor %}
+    </div>
+
+    <div class="tst-dots" id="tstDots" aria-hidden="true"></div>
+  </div>
+</section>
 
     <!-- ============ BECOME AN INSTRUCTOR CTA ============ -->
     <section class="section become" aria-labelledby="become-title">

@@ -183,3 +183,35 @@ class HeroContent(models.Model):
         verbose_name = "محتوای بنر اصلی"
         verbose_name_plural = "محتوای بنر اصلی"
 
+
+
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=100, verbose_name="نام کاربر")
+    role = models.CharField(
+        max_length=150,
+        verbose_name="عنوان یا شغل کاربر"
+    )
+    content = models.TextField(verbose_name="متن تجربه کاربر")
+    image = models.ImageField(
+        upload_to="testimonials/",
+        blank=True,
+        null=True,
+        verbose_name="عکس کاربر"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="نمایش در سایت"
+    )
+    order = models.PositiveIntegerField(
+        default=1,
+        verbose_name="ترتیب نمایش"
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "نظر کاربر"
+        verbose_name_plural = "نظرات کاربران"
