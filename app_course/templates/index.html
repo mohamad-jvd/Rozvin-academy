@@ -35,13 +35,12 @@
       <nav class="main-nav" id="mainNav" aria-label="Primary">
         <ul class="nav-list">
           <li><a href="#courses">Courses</a></li>
-          <li><a href="#categories">Categories</a></li>
+
           <li><a href="#instructors">Instructors</a></li>
-          <li><a href="#how">How it works</a></li>
+          <li><a href=""></a></li>
         </ul>
         <div class="nav-cta">
-          <a class="link-plain" href="#">Log in</a>
-          <a class="btn btn-brand" href="#courses">Join free</a>
+          <a class="btn btn-brand" href="#how">How it works</a>
         </div>
       </nav>
 
@@ -72,15 +71,7 @@
               <input type="text" id="q" name="q" placeholder="What do you want to learn?" autocomplete="off">
             </div>
             <label class="visually-hidden" for="cat">Category</label>
-            <select id="cat" name="cat" class="search-select">
-              <option value="">All categories</option>
-              <option>Development</option>
-              <option>Design</option>
-              <option>Business</option>
-              <option>Marketing</option>
-              <option>Data Science</option>
-              <option>Languages</option>
-            </select>
+          
             <button class="btn btn-brand search-submit" type="submit">Find courses</button>
           </form>
           <p class="search-note" id="searchNote" role="status" aria-live="polite"></p>
@@ -121,60 +112,7 @@
     </section>
 
     <!-- ============ CATEGORIES ============ -->
-    <section class="section categories" id="categories" aria-labelledby="cat-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="kicker">Browse by topic</p>
-            <h2 id="cat-title">Find your corner of Campus</h2>
-          </div>
-          <p class="section-sub">Fifty subjects, one login. Pick a lane and go deep, or wander — your progress saves everywhere.</p>
-        </div>
 
-        <ul class="cat-grid reveal">
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-dev" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="m9 8-5 4 5 4M15 8l5 4-5 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="cat-name">Development</span>
-            <span class="cat-count">612 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-design" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 20s2-6 8-12l4 4C10 18 4 20 4 20Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m14 6 4 4 2.2-2.2a1.6 1.6 0 0 0 0-2.2l-1.8-1.8a1.6 1.6 0 0 0-2.2 0L14 6Z" fill="currentColor"/></svg></span>
-            <span class="cat-name">Design</span>
-            <span class="cat-count">438 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-biz" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-            <span class="cat-name">Business</span>
-            <span class="cat-count">507 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-mkt" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 10v4a1 1 0 0 0 1 1h2l5 4V5L6 9H4a1 1 0 0 0-1 1Z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-            <span class="cat-name">Marketing</span>
-            <span class="cat-count">361 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-photo" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
-            <span class="cat-name">Photography</span>
-            <span class="cat-count">248 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-music" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/></svg></span>
-            <span class="cat-name">Music</span>
-            <span class="cat-count">193 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-data" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 20V4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="7" y="12" width="3.4" height="6" rx="1" fill="currentColor"/><rect x="12.5" y="8" width="3.4" height="10" rx="1" fill="currentColor"/><rect x="18" y="5" width="3.4" height="13" rx="1" fill="currentColor"/></svg></span>
-            <span class="cat-name">Data Science</span>
-            <span class="cat-count">274 courses</span>
-          </a></li>
-          <li><a class="cat-tile" href="#courses">
-            <span class="cat-ico ico-lang" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.8 5.4 3.8 8.5S14.4 18.2 12 20.5C9.6 18.2 8.2 15.1 8.2 12S9.6 5.8 12 3.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
-            <span class="cat-name">Languages</span>
-            <span class="cat-count">156 courses</span>
-          </a></li>
-        </ul>
-      </div>
-    </section>
 
     <!-- ============ POPULAR COURSES ============ -->
     <section class="section courses" id="courses" aria-labelledby="courses-title">
@@ -184,9 +122,7 @@
             <p class="kicker">Most enrolled this month</p>
             <h2 id="courses-title">Popular courses learners can't stop recommending</h2>
           </div>
-          <a class="link-arrow" href="#">View all 4,200 courses
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+
         </div>
 
         <div class="filter-bar" role="tablist" aria-label="Filter courses by category">
