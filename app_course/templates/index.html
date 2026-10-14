@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{% static "css/vendor/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -95,7 +96,7 @@
 
         <div class="hero-visual" aria-hidden="false">
           <div class="hero-frame">
-            <img src="img/hero.jpg" width="1280" height="720" alt="Students learning together with laptops in a bright classroom" loading="eager">
+            <img src="{% static "img/hero.jpg" %}" width="1280" height="720" alt="Students learning together with laptops in a bright classroom" loading="eager">
           </div>
           <div class="float-card float-rating">
             <span class="fc-star" aria-hidden="true">
@@ -204,7 +205,7 @@
 
           <article class="course-card" data-category="development">
             <div class="cc-media">
-              <img src="img/c1.jpg" width="640" height="440" alt="Developer writing React and Node.js code on a laptop" loading="lazy">
+              <img src="{% static "img/c1.jpg" %}" width="640" height="440" alt="Developer writing React and Node.js code on a laptop" loading="lazy">
               <span class="cc-tag">Development</span>
             </div>
             <div class="cc-body">
@@ -219,7 +220,7 @@
 
           <article class="course-card" data-category="design">
             <div class="cc-media">
-              <img src="img/c2.jpg" width="640" height="440" alt="Designer sketching wireframes and prototypes at a desk" loading="lazy">
+              <img src="{% static "img/c2.jpg" %}" width="640" height="440" alt="Designer sketching wireframes and prototypes at a desk" loading="lazy">
               <span class="cc-tag">Design</span>
             </div>
             <div class="cc-body">
@@ -234,7 +235,7 @@
 
           <article class="course-card" data-category="data">
             <div class="cc-media">
-              <img src="img/c7.jpg" width="640" height="440" alt="Data analyst reviewing charts in a research laboratory" loading="lazy">
+              <img src="{% static "img/c7.jpg" %}" width="640" height="440" alt="Data analyst reviewing charts in a research laboratory" loading="lazy">
               <span class="cc-tag">Data Science</span>
             </div>
             <div class="cc-body">
@@ -249,7 +250,7 @@
 
           <article class="course-card" data-category="photography">
             <div class="cc-media">
-              <img src="img/c4.jpg" width="640" height="440" alt="Photographer adjusting a camera during a studio shoot" loading="lazy">
+              <img src="{% static "img/c4.jpg" %}" width="640" height="440" alt="Photographer adjusting a camera during a studio shoot" loading="lazy">
               <span class="cc-tag">Photography</span>
             </div>
             <div class="cc-body">
@@ -264,7 +265,7 @@
 
           <article class="course-card" data-category="marketing">
             <div class="cc-media">
-              <img src="img/c3.jpg" width="640" height="440" alt="Marketing team reviewing an analytics dashboard in an office" loading="lazy">
+              <img src="{% static "img/c3.jpg" %}" width="640" height="440" alt="Marketing team reviewing an analytics dashboard in an office" loading="lazy">
               <span class="cc-tag">Marketing</span>
             </div>
             <div class="cc-body">
@@ -279,7 +280,7 @@
 
           <article class="course-card" data-category="business">
             <div class="cc-media">
-              <img src="img/c5.jpg" width="640" height="440" alt="Founders discussing startup finance around a meeting table" loading="lazy">
+              <img src="{% static "img/c5.jpg" %}" width="640" height="440" alt="Founders discussing startup finance around a meeting table" loading="lazy">
               <span class="cc-tag">Business</span>
             </div>
             <div class="cc-body">
@@ -294,7 +295,7 @@
 
           <article class="course-card" data-category="music">
             <div class="cc-media">
-              <img src="img/c6.jpg" width="640" height="440" alt="Producer arranging a track inside a home music studio" loading="lazy">
+              <img src="{% static "img/c6.jpg" %}" width="640" height="440" alt="Producer arranging a track inside a home music studio" loading="lazy">
               <span class="cc-tag">Music</span>
             </div>
             <div class="cc-body">
@@ -309,7 +310,7 @@
 
           <article class="course-card" data-category="language">
             <div class="cc-media">
-              <img src="img/c8.jpg" width="640" height="440" alt="Open books and study notes in a warm library setting" loading="lazy">
+              <img src="{% static "img/c8.jpg" %}" width="640" height="440" alt="Open books and study notes in a warm library setting" loading="lazy">
               <span class="cc-tag">Languages</span>
             </div>
             <div class="cc-body">
@@ -364,25 +365,25 @@
 
         <ul class="inst-grid reveal">
           <li class="inst-card">
-            <div class="inst-avatar"><img src="img/t1.jpg" width="300" height="300" alt="Portrait of instructor Marcus Reyes" loading="lazy"></div>
+            <div class="inst-avatar"><img src="{% static "img/t1.jpg" %}" width="300" height="300" alt="Portrait of instructor Marcus Reyes" loading="lazy"></div>
             <h3 class="inst-name">Marcus Reyes</h3>
             <p class="inst-role">Software Engineering</p>
             <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 18,400 students</p>
           </li>
           <li class="inst-card">
-            <div class="inst-avatar"><img src="img/t2.jpg" width="300" height="300" alt="Portrait of instructor Priya Nair" loading="lazy"></div>
+            <div class="inst-avatar"><img src="{% static "img/t2.jpg" %}" width="300" height="300" alt="Portrait of instructor Priya Nair" loading="lazy"></div>
             <h3 class="inst-name">Priya Nair</h3>
             <p class="inst-role">Product &amp; UX Design</p>
             <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 · 12,900 students</p>
           </li>
           <li class="inst-card">
-            <div class="inst-avatar"><img src="img/t3.jpg" width="300" height="300" alt="Portrait of instructor Aisha Rahman" loading="lazy"></div>
+            <div class="inst-avatar"><img src="{% static "img/t3.jpg" %}" width="300" height="300" alt="Portrait of instructor Aisha Rahman" loading="lazy"></div>
             <h3 class="inst-name">Aisha Rahman</h3>
             <p class="inst-role">Data Science</p>
             <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 24,100 students</p>
           </li>
           <li class="inst-card">
-            <div class="inst-avatar"><img src="img/t4.jpg" width="300" height="300" alt="Portrait of instructor Lena Vogt" loading="lazy"></div>
+            <div class="inst-avatar"><img src="{% static "img/t4.jpg" %}" width="300" height="300" alt="Portrait of instructor Lena Vogt" loading="lazy"></div>
             <h3 class="inst-name">Lena Vogt</h3>
             <p class="inst-role">Photography &amp; Film</p>
             <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 9,600 students</p>
@@ -473,7 +474,7 @@
       <div class="container">
         <div class="become-card">
           <div class="become-media">
-            <img src="img/cta.jpg" width="900" height="1000" alt="Instructor teaching a lesson in front of a classroom" loading="lazy">
+            <img src="{% static "img/cta.jpg" %}" width="900" height="1000" alt="Instructor teaching a lesson in front of a classroom" loading="lazy">
           </div>
           <div class="become-body">
             <p class="kicker kicker-light">Teach on Campus</p>
@@ -574,7 +575,7 @@
     </div>
   </footer>
 
-  <script src="js/vendor/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="{% static "js/vendor/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
 </body>
 </html>
