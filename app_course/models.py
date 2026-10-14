@@ -61,11 +61,12 @@ class Course(models.Model):
     )
 
     instructor = models.ForeignKey(
-        Instructor,
-        on_delete=models.CASCADE,
-        related_name="courses",
-        verbose_name="استاد"
-    )
+    "app_course.Instructor",
+    on_delete=models.CASCADE,
+    related_name="courses",
+    verbose_name="استاد"
+)
+
 
     def __str__(self):
         return self.title
@@ -215,3 +216,100 @@ class Testimonial(models.Model):
         ordering = ["order"]
         verbose_name = "نظر کاربر"
         verbose_name_plural = "نظرات کاربران"
+
+
+
+
+class Education(models.Model):
+    instructor = models.ForeignKey(
+        Instructor,
+        on_delete=models.CASCADE,
+        related_name="educations",
+        verbose_name="رزومه"
+    )
+
+    title = models.CharField(
+        max_length=200,
+        verbose_name="مدرک یا عنوان دوره"
+    )
+
+    institution = models.CharField(
+        max_length=200,
+        verbose_name="دانشگاه یا مؤسسه"
+    )
+
+    start_year = models.CharField(
+        max_length=10,
+        verbose_name="سال شروع"
+    )
+
+    end_year = models.CharField(
+        max_length=10,
+        blank=True,
+        verbose_name="سال پایان"
+    )
+
+    description = models.TextField(
+        blank=True,
+        verbose_name="توضیحات"
+    )
+
+    order = models.PositiveIntegerField(
+        default=1,
+        verbose_name="ترتیب نمایش"
+    )
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "سابقه تحصیلی"
+        verbose_name_plural = "سوابق تحصیلی"
+
+    def __str__(self):
+        return f"{self.title} - {self.institution}"
+
+
+class WorkExperience(models.Model):
+    instructor = models.ForeignKey(
+        Instructor,
+        on_delete=models.CASCADE,
+        related_name="experiences",
+        verbose_name="رزومه"
+    )
+
+    job_title = models.CharField(
+        max_length=200,
+        verbose_name="عنوان شغلی"
+    )
+
+    company = models.CharField(
+        max_length=200,
+        verbose_name="نام شرکت یا مجموعه"
+    )
+
+    start_year = models.CharField(
+        max_length=10,
+        verbose_name="سال شروع"
+    )
+
+    end_year = models.CharField(
+        max_length=10,
+        blank=True,
+        verbose_name="سال پایان"
+    )
+
+    description = models.TextField(
+        verbose_name="توضیحات و مسئولیت‌ها"
+    )
+
+    order = models.PositiveIntegerField(
+        default=1,
+        verbose_name="ترتیب نمایش"
+    )
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "سابقه کاری"
+        verbose_name_plural = "سوابق کاری"
+
+    def __str__(self):
+        return f"{self.job_title} - {self.company}"

@@ -7,6 +7,9 @@ from .models import (
     TrendingTopic,
     HeroContent,
     Testimonial,
+    Instructor,
+    Education,
+    WorkExperience,
 )
 
 
@@ -25,6 +28,7 @@ def index(request):
 
     hero_content = HeroContent.objects.first()
     testimonials = Testimonial.objects.filter(is_active=True)
+    instructors = Instructor.objects.all()
 
     return render(request, "index.html", {
         "courses": courses,
@@ -33,6 +37,7 @@ def index(request):
         "trending_topics": trending_topics,
         "hero_content": hero_content,
         "testimonials": testimonials,
+        "instructors": instructors,
     })
 
 
@@ -59,4 +64,70 @@ def category_courses(request, slug):
     return render(request, "category_courses.html", {
         "category": category,
         "courses": courses,
+    })
+
+
+
+def resume_view(request):
+    instructor = Instructor.objects.first()
+
+    
+    skills_list = []
+
+    if instructor and instructor.skills:
+        skills_list = [
+            skill.strip()
+            for skill in instructor.skills.replace("،", ",").split(",")
+            if skill.strip()
+        ]
+
+    
+    educations = (
+        Education.objects.filter(instructor=instructor)
+        if instructor else Education.objects.none()
+    )
+
+    
+    experiences = (
+        WorkExperience.objects.filter(instructor=instructor)
+        if instructor else WorkExperience.objects.none()
+    )
+
+    return render(request, "resume.html", {
+        "instructor": instructor,
+        "skills_list": skills_list,
+        "educations": educations,
+        "experiences": experiences,
+    })
+
+
+
+def instructor_resume_view(request, instructor_id):
+    instructor = get_object_or_404(
+        Instructor,
+        pk=instructor_id
+    )
+
+    skills_list = []
+
+    if instructor.skills:
+        skills_list = [
+            skill.strip()
+            for skill in instructor.skills.replace("،", ",").split(",")
+            if skill.strip()
+        ]
+
+    educations = Education.objects.filter(
+        instructor=instructor
+    )
+
+    experiences = WorkExperience.objects.filter(
+        instructor=instructor
+    )
+
+    return render(request, "resume.html", {
+        "instructor": instructor,
+        "skills_list": skills_list,
+        "educations": educations,
+        "experiences": experiences,
     })

@@ -306,32 +306,41 @@
           <p class="section-sub">Every mentor on Campus is vetted for real-world experience — not just a nice slide deck.</p>
         </div>
 
-        <ul class="inst-grid reveal">
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t1.jpg" %}" width="300" height="300" alt="Portrait of instructor Marcus Reyes" loading="lazy"></div>
-            <h3 class="inst-name">Marcus Reyes</h3>
-            <p class="inst-role">Software Engineering</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 18,400 students</p>
-          </li>
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t2.jpg" %}" width="300" height="300" alt="Portrait of instructor Priya Nair" loading="lazy"></div>
-            <h3 class="inst-name">Priya Nair</h3>
-            <p class="inst-role">Product &amp; UX Design</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 · 12,900 students</p>
-          </li>
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t3.jpg" %}" width="300" height="300" alt="Portrait of instructor Aisha Rahman" loading="lazy"></div>
-            <h3 class="inst-name">Aisha Rahman</h3>
-            <p class="inst-role">Data Science</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 24,100 students</p>
-          </li>
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t4.jpg" %}" width="300" height="300" alt="Portrait of instructor Lena Vogt" loading="lazy"></div>
-            <h3 class="inst-name">Lena Vogt</h3>
-            <p class="inst-role">Photography &amp; Film</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 9,600 students</p>
-          </li>
-        </ul>
+        
+<ul class="inst-grid reveal">
+    {% for instructor in instructors %}
+        <li class="inst-card">
+            <a href="{% url 'instructor_resume' instructor.id %}"
+               class="inst-link">
+
+                <div class="inst-avatar">
+                    {% if instructor.photo %}
+                        <img
+                            src="{{ instructor.photo.url }}"
+                            width="300"
+                            height="300"
+                            alt="{{ instructor.first_name }} {{ instructor.last_name }}"
+                            loading="lazy"
+                        >
+                    {% endif %}
+                </div>
+
+                <h3 class="inst-name">
+                    {{ instructor.first_name }} {{ instructor.last_name }}
+                </h3>
+
+                <p class="inst-role">
+                    {{ instructor.skills|default:"مدرس دوره‌های آموزشی" }}
+                </p>
+
+                <span class="inst-more">مشاهده رزومه ←</span>
+            </a>
+        </li>
+    {% empty %}
+        <li>هنوز استادی ثبت نشده است.</li>
+    {% endfor %}
+</ul>
+
       </div>
     </section>
 
@@ -368,7 +377,7 @@
       </div>
     </section>
 
-    <!-- ============ TESTIMONIALS ============ -->
+    
     <!-- ============ TESTIMONIALS ============ -->
 <section class="section testimonials" aria-labelledby="tst-title">
   <div class="container">

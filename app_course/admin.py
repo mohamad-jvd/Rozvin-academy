@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Instructor, Course, CourseTopic,Banner,Category,TrendingTopic,HeroContent,Testimonial
+from .models import Course, CourseTopic, Banner, Category, TrendingTopic, HeroContent, Testimonial
 
 
 class CourseTopicInline(admin.TabularInline):
@@ -8,10 +8,6 @@ class CourseTopicInline(admin.TabularInline):
     extra = 1
 
 
-@admin.register(Instructor)
-class InstructorAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name")
-    search_fields = ("first_name", "last_name", "skills")
 
 
 @admin.register(Category)
@@ -83,4 +79,9 @@ class TestimonialAdmin(admin.ModelAdmin):
     list_filter = ("is_active",)
     search_fields = ("name", "role", "content")
     ordering = ("order",)
+
+
+
+
+
 

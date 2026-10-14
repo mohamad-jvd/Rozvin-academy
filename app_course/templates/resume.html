@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه شخصی</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f5f8f6;
+            color: #26352d;
+            line-height: 2;
+        }
+
+        :root {
+            --green: #1E7A50;
+            --light-green: #eaf4ee;
+            --text: #26352d;
+            --muted: #6b7b71;
+        }
+
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #e5eee8;
+            padding: 16px 8%;
+        }
+
+        .navbar span {
+            color: var(--green);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .profile {
+            background: #fff;
+            border: 1px solid #e5eee8;
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .profile img {
+            width: 105px;
+            height: 105px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--light-green);
+        }
+
+        .profile h1 {
+            font-size: 25px;
+            color: var(--green);
+            margin-bottom: 4px;
+        }
+
+        .job-title {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .section {
+            background: #fff;
+            padding: 28px 30px;
+            border: 1px solid #e5eee8;
+            border-radius: 18px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: var(--green);
+            font-size: 19px;
+            margin-bottom: 15px;
+            padding-right: 12px;
+            border-right: 4px solid var(--green);
+        }
+
+        .section p {
+            font-size: 14px;
+            color: #526158;
+            text-align: justify;
+        }
+
+        .experience-item {
+            border-right: 2px solid #d8e9de;
+            padding: 0 18px 20px 0;
+            margin-right: 5px;
+        }
+
+        .experience-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .experience-item h3 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .date {
+            color: var(--green);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: var(--light-green);
+            color: var(--green);
+            border-radius: 8px;
+            padding: 5px 13px;
+            font-size: 13px;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: var(--green);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 9px;
+            padding: 9px 22px;
+            margin-top: 18px;
+            font-size: 14px;
+            transition: background .2s;
+        }
+
+        .contact-button:hover {
+            background: #165e3d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 25px auto;
+                padding: 0 12px;
+            }
+
+            .profile {
+                padding: 22px 18px;
+                gap: 15px;
+            }
+
+            .profile img {
+                width: 78px;
+                height: 78px;
+            }
+
+            .profile h1 {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 22px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <span>رزومه من</span>
+    </nav>
+
+    <main class="container">
+
+        <!-- معرفی و عکس پروفایل -->
+        <header class="profile">
+           {% if instructor %}
+    {% if instructor.photo %}
+        <img src="{{ instructor.photo.url }}" alt="{{ instructor.first_name }}">
+    {% endif %}
+
+    <h1>{{ instructor.first_name }} {{ instructor.last_name }}</h1>
+
+    <div class="job-title">
+        {{ instructor.skills }}
+    </div>
+{% endif %}
+                    تهران | example@email.com
+                </div>
+                <a class="contact-button" href="mailto:example@email.com">
+                    ارتباط با من
+                </a>
+            </div>
+        </header>
+
+        <!-- درباره من -->
+        <section class="section">
+            <h2>درباره من</h2>
+           <p>{{ instructor.biography|linebreaksbr }}</p>
+        </section>
+
+        <!-- سوابق کاری -->
+    
+
+<section class="section">
+    <h2>سوابق کاری</h2>
+
+    {% for experience in experiences %}
+        <div class="experience-item">
+            <h3>{{ experience.job_title }}</h3>
+
+            <div class="date">
+                {{ experience.company }}
+                | {{ experience.start_year }}
+
+                {% if experience.end_year %}
+                    تا {{ experience.end_year }}
+                {% else %}
+                    تا امروز
+                {% endif %}
+            </div>
+
+            {% if experience.description %}
+                <p>{{ experience.description|linebreaksbr }}</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>هنوز سابقه کاری ثبت نشده است.</p>
+    {% endfor %}
+</section>
+
+
+
+        <!-- مهارت ها -->
+    
+<section class="section">
+    <h2>مهارت‌ها</h2>
+
+    <div class="skills">
+        {% if skills_list %}
+            {% for skill in skills_list %}
+                <span class="skill">{{ skill }}</span>
+            {% endfor %}
+        {% else %}
+            <span>هنوز مهارتی ثبت نشده است.</span>
+        {% endif %}
+    </div>
+</section>
+
+
+        <!-- تحصیلات -->
+<section class="section">
+    <h2>تحصیلات و دوره‌ها</h2>
+
+    {% for education in educations %}
+        <div class="experience-item">
+            <h3>{{ education.title }}</h3>
+
+            <div class="date">
+                {{ education.institution }}
+                | {{ education.start_year }}
+                {% if education.end_year %}
+                    تا {{ education.end_year }}
+                {% else %}
+                    تا امروز
+                {% endif %}
+            </div>
+
+            {% if education.description %}
+                <p>{{ education.description|linebreaksbr }}</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>هنوز سابقه تحصیلی ثبت نشده است.</p>
+    {% endfor %}
+</section>
+
+
+    </main>
+
+    <footer>
+        تمامی حقوق محفوظ است.
+    </footer>
+
+</body>
+</html>
+```
