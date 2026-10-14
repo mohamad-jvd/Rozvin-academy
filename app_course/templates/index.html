@@ -56,80 +56,117 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
+   
+<section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+
+        <!-- ستون متن -->
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span>4,200+ courses · 50+ topics · new lessons weekly</p>
-          <h1 id="hero-title">Skills worth showing off, taught by people worth learning from.</h1>
-          <p class="hero-lead">Rozvin pairs you with expert-led video courses, real hands-on projects, and a certificate you'll actually want to share. Start free — upgrade only when you're hooked.</p>
+          {% if hero_content %}
+            <p class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              {{ hero_content.eyebrow }}
+            </p>
+
+            <h1 id="hero-title">{{ hero_content.title }}</h1>
+
+            <p class="hero-lead">{{ hero_content.description }}</p>
+          {% else %}
+            <p class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              4,200+ courses · 50+ topics · new lessons weekly
+            </p>
+
+            <h1 id="hero-title">
+              Skills worth showing off, taught by people worth learning from.
+            </h1>
+
+            <p class="hero-lead">
+              Rozvin pairs you with expert-led video courses, real hands-on projects, and a certificate you'll actually want to share. Start free — upgrade only when you're hooked.
+            </p>
+          {% endif %}
 
           <form class="search-bar" id="searchBar" role="search"
-              method="get" action="">
-              <div class="search-field">
-                  <span class="search-ico" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="20" height="20">
-                          <circle cx="11" cy="11" r="7" fill="none"
-                                  stroke="currentColor" stroke-width="2"/>
-                          <path d="m20 20-3.2-3.2" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                  </span>
+                method="get" action="">
+            <div class="search-field">
+              <span class="search-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <circle cx="11" cy="11" r="7" fill="none"
+                          stroke="currentColor" stroke-width="2"/>
+                  <path d="m20 20-3.2-3.2" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
 
-                  <label class="visually-hidden" for="q">
-                      What do you want to learn?
-                  </label>
+              <label class="visually-hidden" for="q">
+                What do you want to learn?
+              </label>
 
-                  <input
-                      type="text"
-                      id="q"
-                      name="q"
-                      placeholder="What do you want to learn?"
-                      autocomplete="off"
-                      value="{{ search_query }}"
-                  >
-              </div>
+              <input
+                type="text"
+                id="q"
+                name="q"
+                placeholder="What do you want to learn?"
+                autocomplete="off"
+                value="{{ search_query }}"
+              >
+            </div>
 
-              <button class="btn btn-brand search-submit" type="submit">
-                  جستجو
-              </button>
+            <button class="btn btn-brand search-submit" type="submit">
+              جستجو
+            </button>
           </form>
 
-          <p class="search-note" id="searchNote" role="status" aria-live="polite"></p>
+          <p class="search-note" id="searchNote"
+             role="status" aria-live="polite"></p>
 
           <div class="hero-chips">
             <span class="chips-label">Trending:</span>
-            <button class="chip" type="button">Python</button>
-            <button class="chip" type="button">UX Design</button>
-            <button class="chip" type="button">Excel</button>
-            <button class="chip" type="button">Public Speaking</button>
+
+            {% for topic in trending_topics %}
+              {% if topic.link %}
+                <a class="chip" href="{{ topic.link }}">
+                  {{ topic.title }}
+                </a>
+              {% else %}
+                <button class="chip" type="button">
+                  {{ topic.title }}
+                </button>
+              {% endif %}
+            {% empty %}
+              <button class="chip" type="button">Python</button>
+              <button class="chip" type="button">UX Design</button>
+              <button class="chip" type="button">Excel</button>
+              <button class="chip" type="button">Public Speaking</button>
+            {% endfor %}
           </div>
+
+        <!-- ستون بنر -->
+        <div class="hero-visual" aria-hidden="false">
+            {% if banner %}
+                <div class="hero-frame">
+                    {% if banner.link %}
+                        <a href="{{ banner.link }}">
+                            <img
+                                src="{{ banner.image.url }}"
+                                alt="{{ banner.title|default:'بنر سایت' }}"
+                                loading="eager"
+                            >
+                        </a>
+                    {% else %}
+                        <img
+                            src="{{ banner.image.url }}"
+                            alt="{{ banner.title|default:'بنر سایت' }}"
+                            loading="eager"
+                        >
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
 
-        <div class="hero-visual" aria-hidden="false">
-          <div class="hero-frame">
-            <img src="{% static "img/hero.jpg" %}" width="1280" height="720" alt="Students learning together with laptops in a bright classroom" loading="eager">
-          </div>
-          <div class="float-card float-rating">
-            <span class="fc-star" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg>
-            </span>
-            <div>
-              <strong>4.8 / 5</strong>
-              <small>from 92,000 learners</small>
-            </div>
-          </div>
-          <div class="float-card float-cert">
-            <span class="fc-check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <strong>Certificate earned</strong>
-              <small>Data Science track</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- ============ CATEGORIES ============ -->
 
@@ -364,29 +401,40 @@
     </section>
 
     <!-- ============ STATS BAND ============ -->
-    <section class="section stats-band" aria-label="Rozvin by the numbers">
+    <section class="section stats-band" aria-label="آمار سایت">
       <div class="container">
         <ul class="stats-grid reveal">
-          <li class="stat">
-            <span class="stat-num" data-count="92000" data-suffix="+">0</span>
-            <span class="stat-label">Active learners</span>
-          </li>
-          <li class="stat">
-            <span class="stat-num" data-count="4200" data-suffix="+">0</span>
-            <span class="stat-label">Expert-led courses</span>
-          </li>
-          <li class="stat">
-            <span class="stat-num" data-count="380" data-suffix="">0</span>
-            <span class="stat-label">Verified instructors</span>
-          </li>
-          <li class="stat">
-            <span class="stat-num" data-count="1.2" data-suffix="M" data-decimals="1">0</span>
-            <span class="stat-label">Certificates awarded</span>
-          </li>
+          {% for stat in site_statistics %}
+            <li class="stat">
+              <span
+                class="stat-num"
+                data-count="{{ stat.value }}"
+                data-suffix="{{ stat.suffix }}"
+                data-decimals="1"
+              >0</span>
+              <span class="stat-label">{{ stat.title }}</span>
+            </li>
+          {% empty %}
+            <li class="stat">
+              <span class="stat-num" data-count="92000" data-suffix="+">0</span>
+              <span class="stat-label">Active learners</span>
+            </li>
+            <li class="stat">
+              <span class="stat-num" data-count="4200" data-suffix="+">0</span>
+              <span class="stat-label">Expert-led courses</span>
+            </li>
+            <li class="stat">
+              <span class="stat-num" data-count="380" data-suffix="">0</span>
+              <span class="stat-label">Verified instructors</span>
+            </li>
+            <li class="stat">
+              <span class="stat-num" data-count="1.2" data-suffix="M" data-decimals="1">0</span>
+              <span class="stat-label">Certificates awarded</span>
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </section>
-
     <!-- ============ INSTRUCTORS ============ -->
     <section class="section instructors" id="instructors" aria-labelledby="inst-title">
       <div class="container">
@@ -398,32 +446,41 @@
           <p class="section-sub">Every mentor on Rozvin is vetted for real-world experience — not just a nice slide deck.</p>
         </div>
 
-        <ul class="inst-grid reveal">
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t1.jpg" %}" width="300" height="300" alt="Portrait of instructor Marcus Reyes" loading="lazy"></div>
-            <h3 class="inst-name">Marcus Reyes</h3>
-            <p class="inst-role">Software Engineering</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 18,400 students</p>
-          </li>
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t2.jpg" %}" width="300" height="300" alt="Portrait of instructor Priya Nair" loading="lazy"></div>
-            <h3 class="inst-name">Priya Nair</h3>
-            <p class="inst-role">Product &amp; UX Design</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.8 · 12,900 students</p>
-          </li>
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t3.jpg" %}" width="300" height="300" alt="Portrait of instructor Aisha Rahman" loading="lazy"></div>
-            <h3 class="inst-name">Aisha Rahman</h3>
-            <p class="inst-role">Data Science</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 24,100 students</p>
-          </li>
-          <li class="inst-card">
-            <div class="inst-avatar"><img src="{% static "img/t4.jpg" %}" width="300" height="300" alt="Portrait of instructor Lena Vogt" loading="lazy"></div>
-            <h3 class="inst-name">Lena Vogt</h3>
-            <p class="inst-role">Photography &amp; Film</p>
-            <p class="inst-stats"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3Z" fill="currentColor"/></svg></span>4.9 · 9,600 students</p>
-          </li>
-        </ul>
+        
+<ul class="inst-grid reveal">
+    {% for instructor in instructors %}
+        <li class="inst-card">
+            <a href="{% url 'instructor_resume' instructor.id %}"
+               class="inst-link">
+
+                <div class="inst-avatar">
+                    {% if instructor.photo %}
+                        <img
+                            src="{{ instructor.photo.url }}"
+                            width="300"
+                            height="300"
+                            alt="{{ instructor.first_name }} {{ instructor.last_name }}"
+                            loading="lazy"
+                        >
+                    {% endif %}
+                </div>
+
+                <h3 class="inst-name">
+                    {{ instructor.first_name }} {{ instructor.last_name }}
+                </h3>
+
+                <p class="inst-role">
+                    {{ instructor.skills|default:"مدرس دوره‌های آموزشی" }}
+                </p>
+
+                <span class="inst-more">مشاهده رزومه ←</span>
+            </a>
+        </li>
+    {% empty %}
+        <li>هنوز استادی ثبت نشده است.</li>
+    {% endfor %}
+</ul>
+
       </div>
     </section>
 
@@ -460,49 +517,60 @@
       </div>
     </section>
 
+    
     <!-- ============ TESTIMONIALS ============ -->
-    <section class="section testimonials" aria-labelledby="tst-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="kicker">Learner stories</p>
-            <h2 id="tst-title">92,000 people picked up something new</h2>
-          </div>
-          <div class="slider-nav">
-            <button class="slider-btn" id="tstPrev" aria-label="Previous testimonial">
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="slider-btn" id="tstNext" aria-label="Next testimonial">
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="tst-track" id="tstTrack" tabindex="0" aria-label="Testimonials, scrollable">
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>I went from wrestling with spreadsheets to shipping a live data dashboard in nine weeks. The projects are what made it actually stick.</blockquote>
-            <figcaption><strong>Nomsa D.</strong><span>Data Analyst · Cape Town</span></figcaption>
-          </figure>
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>The UX track landed me my first design job. My mentor reviewed every single assignment and pushed my portfolio to a place I'm proud of.</blockquote>
-            <figcaption><strong>Kevin L.</strong><span>Junior Product Designer · Toronto</span></figcaption>
-          </figure>
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>I run a small bakery and finally understand my own marketing. I doubled my weekend orders after one weekend of lessons. Worth every cent.</blockquote>
-            <figcaption><strong>Amara T.</strong><span>Bakery Owner · Lagos</span></figcaption>
-          </figure>
-          <figure class="tst-card">
-            <span class="tst-quote" aria-hidden="true">“</span>
-            <blockquote>Best money I've spent on myself in years. The Spanish course had me chatting confidently on my trip to Madrid — from day one, exactly like it promised.</blockquote>
-            <figcaption><strong>Jonas W.</strong><span>Product Manager · Berlin</span></figcaption>
-          </figure>
-        </div>
-        <div class="tst-dots" id="tstDots" aria-hidden="true"></div>
+<section class="section testimonials" aria-labelledby="tst-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="kicker">Learner stories</p>
+        <h2 id="tst-title">92,000 people picked up something new</h2>
       </div>
-    </section>
+
+      <div class="slider-nav">
+        <button class="slider-btn" id="tstPrev" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="slider-btn" id="tstNext" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tst-track" id="tstTrack" tabindex="0" aria-label="Testimonials, scrollable">
+      {% for testimonial in testimonials %}
+        <figure class="tst-card">
+          <span class="tst-quote" aria-hidden="true">“</span>
+
+          <blockquote>{{ testimonial.content }}</blockquote>
+
+          <figcaption>
+            {% if testimonial.image %}
+              <img
+                src="{{ testimonial.image.url }}"
+                alt="{{ testimonial.name }}"
+                class="tst-avatar"
+                loading="lazy"
+              >
+            {% endif %}
+
+            <strong>{{ testimonial.name }}</strong>
+            <span>{{ testimonial.role }}</span>
+          </figcaption>
+        </figure>
+      {% empty %}
+        <p>No testimonials available yet.</p>
+      {% endfor %}
+    </div>
+
+    <div class="tst-dots" id="tstDots" aria-hidden="true"></div>
+  </div>
+</section>
 
     <!-- ============ BECOME AN INSTRUCTOR CTA ============ -->
     

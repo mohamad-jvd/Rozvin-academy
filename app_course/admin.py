@@ -1,17 +1,22 @@
-
 from django.contrib import admin
-from .models import Instructor, Course, CourseTopic, Category, SiteBanner, SiteSettings
+from .models import (
+    Instructor,
+    Course,
+    CourseTopic,
+    Category,
+    SiteBanner,
+    SiteSettings,
+    Banner,
+    TrendingTopic,
+    HeroContent,
+    Testimonial,
+    SiteStatistic,
+)
 
 
 class CourseTopicInline(admin.TabularInline):
     model = CourseTopic
     extra = 1
-
-
-@admin.register(Instructor)
-class InstructorAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name")
-    search_fields = ("first_name", "last_name", "skills")
 
 
 @admin.register(Category)
@@ -51,20 +56,57 @@ class CourseTopicAdmin(admin.ModelAdmin):
     list_filter = ("course",)
     search_fields = ("title",)
 
+
 @admin.register(SiteBanner)
 class SiteBannerAdmin(admin.ModelAdmin):
     list_display = ("id", "is_active")
     list_filter = ("is_active",)
 
-    def has_module_permission(self, request):
-        return super().has_module_permission(request)
 
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
     list_display = ("telegram_url",)
 
     def has_add_permission(self, request):
-        # فقط یک رکورد تنظیمات اجازه ساخت دارد
         if SiteSettings.objects.exists():
             return False
         return super().has_add_permission(request)
+
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ("title", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("title",)
+
+
+@admin.register(TrendingTopic)
+class TrendingTopicAdmin(admin.ModelAdmin):
+    list_display = ("title", "order", "is_active")
+    list_editable = ("order", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("title",)
+    ordering = ("order",)
+
+
+@admin.register(HeroContent)
+class HeroContentAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ("name", "role", "is_active", "order")
+    list_editable = ("is_active", "order")
+    list_filter = ("is_active",)
+    search_fields = ("name", "role", "content")
+    ordering = ("order",)
+
+
+@admin.register(SiteStatistic)
+class SiteStatisticAdmin(admin.ModelAdmin):
+    list_display = ("title", "value", "suffix", "order", "is_active")
+    list_editable = ("value", "suffix", "order", "is_active")
+    search_fields = ("title",)
+    list_filter = ("is_active",)
+    ordering = ("order",)
