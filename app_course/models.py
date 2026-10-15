@@ -11,9 +11,31 @@ class Instructor(models.Model):
         null=True,
         verbose_name="عکس استاد"
     )
+    
     biography = models.TextField(verbose_name="بیوگرافی")
-    skills = models.TextField(verbose_name="مهارت‌ها")
+    skills = models.TextField(
+    verbose_name="مهارت‌ها",
+    help_text="مهارت‌ها را با کامای انگلیسی (,) جدا کنید. مثال: Python, Linux, Django"
+)
     work_experience = models.TextField(verbose_name="سوابق کاری")
+
+    
+    email = models.EmailField(
+        blank=True,
+        verbose_name="ایمیل"
+    )
+
+    telegram_url = models.URLField(
+        blank=True,
+        verbose_name="لینک تلگرام"
+    )
+
+    city = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="شهر"
+    )
+
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

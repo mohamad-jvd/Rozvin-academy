@@ -2,10 +2,35 @@ from django.contrib import admin
 from .models import Instructor, Education, WorkExperience
 
 
+
 @admin.register(Instructor)
 class InstructorAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name")
-    search_fields = ("first_name", "last_name", "skills")
+    list_display = (
+        "first_name",
+        "last_name",
+        "city",
+        "email",
+    )
+
+    search_fields = (
+        "first_name",
+        "last_name",
+        "skills",
+        "email",
+        "city",
+    )
+
+    fields = (
+        "first_name",
+        "last_name",
+        "photo",
+        "biography",
+        "skills",
+        "work_experience",
+        "city",
+        "email",
+        "telegram_url",
+    )
 
 
 @admin.register(Education)

@@ -141,7 +141,7 @@ def instructor_resume_view(request, instructor_id):
     if instructor.skills:
         skills_list = [
             skill.strip()
-            for skill in instructor.skills.replace("،", ",").split(",")
+            for skill in instructor.skills.replace("،", ",").replace("\n", ",").split(",")
             if skill.strip()
         ]
 

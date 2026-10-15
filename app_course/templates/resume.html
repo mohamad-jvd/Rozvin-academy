@@ -196,31 +196,57 @@
     <main class="container">
 
         <!-- معرفی و عکس پروفایل -->
-        <header class="profile">
-           {% if instructor %}
-    {% if instructor.photo %}
-        <img src="{{ instructor.photo.url }}" alt="{{ instructor.first_name }}">
-    {% endif %}
+       
+            <header class="profile">
+                {% if instructor %}
+                    {% if instructor.photo %}
+                        <img
+                            src="{{ instructor.photo.url }}"
+                            alt="{{ instructor.first_name }}"
+                        >
+                    {% endif %}
 
-    <h1>{{ instructor.first_name }} {{ instructor.last_name }}</h1>
+                    <h1>
+                        {{ instructor.first_name }}
+                        {{ instructor.last_name }}
+                    </h1>
 
-    <div class="job-title">
-        {{ instructor.skills }}
-    </div>
-{% endif %}
-                    تهران | example@email.com
-                </div>
-                <a class="contact-button" href="mailto:example@email.com">
-                    ارتباط با من
-                </a>
-            </div>
-        </header>
+                   
 
-        <!-- درباره من -->
-        <section class="section">
-            <h2>درباره من</h2>
-           <p>{{ instructor.biography|linebreaksbr }}</p>
-        </section>
+                    <div class="contact-info" dir="rtl">
+                        {% if instructor.city %}
+                            <span>{{ instructor.city }}</span>
+                        {% endif %}
+
+                        {% if instructor.city and instructor.email %}
+                            <span aria-hidden="true"> | </span>
+                        {% endif %}
+
+                        {% if instructor.email %}
+                            <a href="mailto:{{ instructor.email }}">
+                                {{ instructor.email }}
+                            </a>
+                        {% endif %}
+                    </div>
+
+                    {% if instructor.telegram_url %}
+                        <a
+                            class="contact-button"
+                            href="{{ instructor.telegram_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ارتباط با من
+                        </a>
+                    {% endif %}
+                {% endif %}
+            </header>
+
+<!-- درباره من -->
+<section class="section">
+    <h2>درباره من</h2>
+    <p>{{ instructor.biography|linebreaksbr }}</p>
+</section>
 
         <!-- سوابق کاری -->
     
