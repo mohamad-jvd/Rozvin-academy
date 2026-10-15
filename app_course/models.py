@@ -175,6 +175,13 @@ class SiteSettings(models.Model):
         help_text="تصویر لوگوی سایت را بارگذاری کنید.",
     )
 
+    favicon = models.ImageField(
+        upload_to="site/",
+        verbose_name="فاوآیکون سایت",
+        blank=True,
+        null=True,
+        help_text="آیکون کوچک نمایش داده‌شده در تب مرورگر را بارگذاری کنید.",
+    )
 
     class Meta:
         verbose_name = "لینک تلگرام "
