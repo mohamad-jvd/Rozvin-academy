@@ -1050,8 +1050,10 @@ img { max-width: 100%; height: auto; display: block; }
 
 .cc-topics ol {
     margin: 0;
-    padding-right: 22px;
-    padding-left: 0;
+    padding: 8px 36px 12px 12px;
+    border-top: 1px solid #e5e7eb;
+    direction: rtl;
+    list-style-position: outside;
 }
 
 .cc-topics li {
@@ -1104,12 +1106,6 @@ img { max-width: 100%; height: auto; display: block; }
     font-weight: 400;
     color: #6b7280;
     white-space: nowrap;
-}
-
-.cc-topics ol {
-    margin: 0;
-    padding: 8px 36px 12px 12px;
-    border-top: 1px solid #e5e7eb;
 }
 
 .cc-topics li {
