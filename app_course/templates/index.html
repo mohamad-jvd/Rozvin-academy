@@ -22,7 +22,15 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a class="brand" href="" aria-label="Rozvin home">
-        <span class="brand-mark" aria-hidden="true">
+        
+        {% if site_settings and site_settings.logo %}
+          <img
+            src="{{ site_settings.logo.url }}"
+            alt="Rozvin"
+            class="brand-logo"
+          >
+        {% else %}
+         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="26" height="26" role="img" aria-hidden="true">
             <path d="M12 3.2 22.5 8 12 12.8 1.5 8 12 3.2Z" fill="currentColor"/>
             <path d="M6 10.4V15c0 1.7 2.9 3.1 6 3.1s6-1.4 6-3.1v-4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -30,6 +38,7 @@
             <circle cx="22.5" cy="13.2" r="1.15" fill="currentColor"/>
           </svg>
         </span>
+        {% endif %}
         <span class="brand-name">Rozvin</span>
       </a>
 

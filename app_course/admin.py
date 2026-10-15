@@ -63,14 +63,17 @@ class SiteBannerAdmin(admin.ModelAdmin):
     list_filter = ("is_active",)
 
 
+
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
-    list_display = ("telegram_url",)
+    list_display = ("telegram_url", "logo")
+    fields = ("telegram_url", "logo")
 
     def has_add_permission(self, request):
         if SiteSettings.objects.exists():
             return False
         return super().has_add_permission(request)
+
 
 
 @admin.register(Banner)

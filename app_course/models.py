@@ -159,16 +159,26 @@ class SiteBanner(models.Model):
         verbose_name_plural = "بنر پایین سایت"
 
 
+
 class SiteSettings(models.Model):
     telegram_url = models.URLField(
-        verbose_name="لینک کانال تلگرام",
+        verbose_name="لینک تلگرام ",
         help_text="لینک کامل کانال تلگرام را وارد کنید.",
         default="https://t.me/YourChannel",
     )
 
+    logo = models.ImageField(
+        upload_to="site/",
+        verbose_name="لوگوی سایت",
+        blank=True,
+        null=True,
+        help_text="تصویر لوگوی سایت را بارگذاری کنید.",
+    )
+
+
     class Meta:
-        verbose_name = "لینک تلگرام"
-        verbose_name_plural = "لینک تلگرام"
+        verbose_name = "لینک تلگرام "
+        verbose_name_plural = "لینک تلگرام و لوگو"
 
     def __str__(self):
         return "لینک تلگرام"
